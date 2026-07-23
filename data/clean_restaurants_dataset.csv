@@ -1,0 +1,88 @@
+Restaurant_Name,Cuisine,Location,Budget,Rating,Review
+Ministry of Crab,Seafood,Colombo,High,4.7,Premium seafood dining with excellent service
+Upali's by Nawaloka,Sri Lankan,Colombo,Medium,4.5,Traditional Sri Lankan food and good atmosphere
+Nuga Gama,Sri Lankan,Colombo,Medium,4.4,Authentic village style Sri Lankan cuisine
+The Lagoon,Seafood,Colombo,High,4.6,Fresh seafood and fine dining experience
+Paradise Road Tintagel Colombo,International,Colombo,High,4.5,Luxury dining with elegant ambience
+Shanmugas,Indian,Colombo,Medium,4.3,Popular vegetarian and Indian dishes
+Pilawoos,Sri Lankan,Colombo,Low,4.1,Famous for kottu and local street food
+Chinese Dragon Cafe,Chinese,Colombo,Low,4.2,Affordable Chinese meals
+Mango Tree,Thai,Colombo,Medium,4.3,Thai cuisine with good service
+Yarl Eat House,Sri Lankan,Jaffna,Low,4.4,Northern Sri Lankan traditional food
+Malayan Cafe,Sri Lankan,Colombo,Low,4.2,Popular local breakfast and meals
+The Curry Leaf,Sri Lankan,Colombo,High,4.3,Traditional Sri Lankan buffet
+Cafe Kumbuk,Cafe,Colombo,Medium,4.5,Healthy food and relaxing cafe environment
+Barefoot Garden Cafe,Cafe,Colombo,Medium,4.4,Artistic cafe with good food
+Galle Face Hotel Restaurants,International,Colombo,High,4.5,Historic hotel dining experience
+A Minute by Tuk Tuk,Sri Lankan,Galle,Medium,4.4,Modern Sri Lankan cuisine
+Poonie's Kitchen,Cafe,Galle,Medium,4.3,Homemade style food
+Fortaleza,International,Galle,High,4.2,Colonial atmosphere and dining
+The Tuna & The Crab,Seafood,Colombo,High,4.5,Special seafood dishes
+Isso,Seafood,Colombo,Medium,4.3,Popular prawn dishes
+Mlesna Tea Centre,Cafe,Colombo,Low,4.1,Tea and light snacks
+The Station,International,Colombo,Medium,4.2,Family dining restaurant
+Park Street Mews,International,Colombo,High,4.5,Upscale dining and ambience
+Cloud Red,Chinese,Colombo,Medium,4.2,Rooftop restaurant with Chinese food
+Thalis Restaurant,Indian,Kandy,Medium,4.3,Indian and vegetarian cuisine
+Balaji Dosai,Indian,Kandy,Low,4.4,South Indian vegetarian food
+Kandy Muslim Hotel,Sri Lankan,Kandy,Low,4.2,Local meals and snacks
+The Empire Cafe,Cafe,Kandy,Medium,4.3,Cafe food near historic area
+Ahas Gawwa,Sri Lankan,Avissawella,High,4.4,Nature dining experience
+Lavazza Cafe,Cafe,Colombo,Medium,4.2,Coffee and desserts
+The Commons Coffee House,Cafe,Colombo,Medium,4.3,Popular cafe with coffee and casual dining
+Seed Cafe,Cafe,Colombo,Medium,4.4,Healthy food and vegetarian options
+Java Lounge,Cafe,Colombo,Medium,4.2,Coffee desserts and quick meals
+Coffee Stop,Cafe,Kandy,Low,4.1,Affordable snacks and beverages
+Royal Bar & Hotel,Sri Lankan,Kandy,Low,4.2,Traditional local meals and snacks
+Balaji Bhavan,Indian,Jaffna,Low,4.3,Popular vegetarian Indian cuisine
+Mangos Indian Veg,Indian,Jaffna,Medium,4.4,Authentic South Indian vegetarian food
+Malaya Restaurant,Sri Lankan,Jaffna,Medium,4.3,Traditional Jaffna dishes
+Nallur Bhavan,Indian,Jaffna,Low,4.2,Local vegetarian meals
+Akshathai,Sri Lankan,Jaffna,Medium,4.3,Jaffna style traditional cuisine
+The Heritage Cafe,Cafe,Galle,Medium,4.2,Relaxing cafe near historic area
+Pedlar's Inn Cafe,Cafe,Galle,Medium,4.4,Popular cafe in Galle Fort
+Chambers Restaurant,International,Galle,High,4.5,Fine dining with great atmosphere
+Elita Restaurant,Seafood,Galle,Medium,4.3,Fresh seafood and local dishes
+Aqua Forte,Seafood,Galle,High,4.4,Seafood with ocean view
+Tropical Lounge,International,Galle,Medium,4.2,Modern dining experience
+Kandy House,International,Kandy,High,4.5,Luxury dining in traditional setting
+Slightly Chilled Lounge Bar,International,Kandy,Medium,4.4,Great view and food
+Cafe Secret Garden,Cafe,Kandy,Medium,4.3,Cosy cafe environment
+White House Restaurant,Sri Lankan,Kandy,Medium,4.2,Family restaurant with local food
+Theva Cuisine,International,Kandy,High,4.5,Premium dining with scenic views
+Royal Mall Restaurant,Sri Lankan,Kandy,Low,4.1,Affordable local meals
+Senani Restaurant,International,Kandy,High,4.4,Good food with city views
+Devon Restaurant,Sri Lankan,Kandy,Medium,4.2,Popular local restaurant
+Balaji Dosai House,Indian,Colombo,Low,4.3,South Indian vegetarian dishes
+Dinemore,Sri Lankan,Colombo,Medium,4.2,Fast food and local favourites
+Fab Foods,Sri Lankan,Colombo,Low,4.1,Affordable bakery and meals
+Green Cabin,Sri Lankan,Colombo,Medium,4.3,Historic restaurant with local dishes
+Nihonbashi,Japanese,Colombo,High,4.5,Japanese cuisine and sushi
+Shiro Restaurant,Japanese,Colombo,High,4.4,Premium Japanese dining
+Kuuraku,Japanese,Colombo,Medium,4.3,Japanese food experience
+Taco Bell Colombo,International,Colombo,Medium,4.1,Fast food and casual dining
+Burger King Sri Lanka,International,Colombo,Low,4.0,Popular fast food restaurant
+McDonald's Sri Lanka,International,Colombo,Medium,4.1,International fast food chain
+Siam House,Thai,Colombo,Medium,4.3,Thai dishes and good service
+Thai Pavilion,Thai,Colombo,High,4.4,Authentic Thai cuisine
+Il Ponte,Italian,Colombo,High,4.3,Italian food and pasta dishes
+Toscana Italian Restaurant,Italian,Colombo,High,4.4,Italian fine dining
+La Trattoria,Italian,Colombo,Medium,4.2,Italian dishes and desserts
+Ciao Colombo,Italian,Colombo,Medium,4.3,Pizza and Italian cuisine
+Navratna,Indian,Colombo,High,4.4,Indian fine dining experience
+The Mango Tree Indian Restaurant,Indian,Colombo,Medium,4.3,Authentic Indian dishes
+Chutneys,Indian,Colombo,Medium,4.4,South Indian cuisine
+Moti Mahal,Indian,Colombo,Medium,4.2,Indian food and family dining
+Rocco's,Italian,Galle,Medium,4.2,Italian food near beach area
+A Minute by Tuk Tuk Colombo,Sri Lankan,Colombo,Medium,4.4,Modern Sri Lankan dishes
+The Fat Crab,Seafood,Negombo,High,4.5,Famous seafood restaurant
+Lords Restaurant,Seafood,Negombo,Medium,4.3,Fresh seafood and beach dining
+Seafood Club,Seafood,Negombo,Medium,4.2,Local seafood dishes
+Tusker Restaurant,Sri Lankan,Negombo,Low,4.1,Affordable local meals
+Muthumala,Sri Lankan,Matara,Low,4.2,Traditional southern cuisine
+The Dutchman Street,International,Galle,Medium,4.3,Historic dining atmosphere
+Zephyr Restaurant,International,Galle,Medium,4.2,Beachside restaurant
+Sahana Restaurant,Sri Lankan,Matara,Low,4.1,Local rice and curry
+Shanmugas Vegetarian Restaurant,Indian,Colombo,Medium,4.3,Vegetarian Indian food
+Rasa Malaysia,Asian,Colombo,Medium,4.2,Asian fusion dishes
+Viharamahadevi Park Cafe,Cafe,Colombo,Low,4.0,Casual outdoor dining
