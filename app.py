@@ -9,6 +9,7 @@ from agents.user_agent import UserAgent
 # -----------------------------
 # Page Configuration
 # -----------------------------
+
 st.set_page_config(
     page_title="Restaurant AI Agent",
     page_icon="🍽️",
@@ -16,9 +17,11 @@ st.set_page_config(
 )
 
 
+
 # -----------------------------
 # Load Dataset
 # -----------------------------
+
 @st.cache_data
 def load_data():
 
@@ -32,6 +35,7 @@ def load_data():
     return df
 
 
+
 df = load_data()
 
 
@@ -39,6 +43,7 @@ df = load_data()
 # -----------------------------
 # Load Agents
 # -----------------------------
+
 @st.cache_resource
 def load_agents():
 
@@ -57,7 +62,9 @@ restaurant_agent, user_agent = load_agents()
 # -----------------------------
 # Title
 # -----------------------------
+
 st.title("🍽️ Restaurant Recommendation AI Agent")
+
 
 st.write(
     "AI powered restaurant recommendation system using RAG and multi-agent architecture."
@@ -75,6 +82,7 @@ st.header("🔎 Search Restaurants")
 col1, col2 = st.columns(2)
 
 
+
 with col1:
 
     location = st.selectbox(
@@ -83,6 +91,7 @@ with col1:
             df["Location"].dropna().unique()
         )
     )
+
 
 
 with col2:
@@ -95,12 +104,14 @@ with col2:
     )
 
 
+
 budget = st.selectbox(
     "Select Budget",
     ["All"] + sorted(
         df["Budget"].dropna().unique()
     )
 )
+
 
 
 min_rating = st.slider(
@@ -118,11 +129,13 @@ if st.button("🍴 Recommend Restaurants"):
     result = df.copy()
 
 
+
     if location != "All":
 
         result = result[
             result["Location"] == location
         ]
+
 
 
     if cuisine != "All":
@@ -132,11 +145,13 @@ if st.button("🍴 Recommend Restaurants"):
         ]
 
 
+
     if budget != "All":
 
         result = result[
             result["Budget"] == budget
         ]
+
 
 
     result = result[
@@ -151,9 +166,11 @@ if st.button("🍴 Recommend Restaurants"):
 
     if len(result) > 0:
 
+
         st.success(
             f"{len(result)} restaurants found"
         )
+
 
 
         for _, row in result.iterrows():
@@ -177,7 +194,9 @@ if st.button("🍴 Recommend Restaurants"):
 """
             )
 
+
             st.divider()
+
 
 
     else:
@@ -197,6 +216,7 @@ if st.button("🍴 Recommend Restaurants"):
 st.header("💬 Chat With Restaurant AI")
 
 
+
 question = st.text_input(
     "Ask anything about restaurants..."
 )
@@ -214,21 +234,37 @@ if st.button("🤖 Ask AI"):
         ):
 
 
-            # User Agent receives user query
+            # ---------------------------------
+            # User Agent creates structured message
+            # ---------------------------------
 
-            preferences = user_agent.get_preferences(
+            user_message = user_agent.create_request(
+
                 location="",
+
                 cuisine="",
+
                 budget="",
+
                 rating=0
+
             )
 
 
-            # Restaurant Agent handles RAG + Review + LLM
+            # Add natural language query
 
-            answer = restaurant_agent.get_recommendation(
-                question
+            user_message["data"]["query"] = question
+
+
+
+            # ---------------------------------
+            # Restaurant Agent receives message
+            # ---------------------------------
+
+            answer = restaurant_agent.receive_user_request(
+                user_message
             )
+
 
 
         st.subheader(

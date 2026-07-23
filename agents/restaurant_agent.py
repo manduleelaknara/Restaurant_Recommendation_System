@@ -9,12 +9,12 @@ class RestaurantAgent:
     """
     Orchestrator Agent
 
-    This agent controls the complete workflow:
-    1. Uses RAG Search Tool to retrieve restaurants
-    2. Sends retrieved information to Review Agent
-    3. Sends ranked results to LLM Agent
-    4. Reflects and validates final response
-    5. Returns final recommendation
+    Handles communication between:
+    User Agent
+    RAG Tool
+    Review Agent
+    LLM Agent
+    Reflection Agent
     """
 
 
@@ -33,30 +33,86 @@ class RestaurantAgent:
 
 
 
+    def receive_user_request(
+        self,
+        user_message
+    ):
+
+        """
+        Receives structured message from UserAgent
+        """
+
+        user_query = str(
+            user_message["data"]["query"]
+        )
+
+        return self.get_recommendation(
+            user_query
+        )
+
+
+
+    def send_to_review_agent(
+        self,
+        restaurants
+    ):
+
+        """
+        Structured message sent to Review Agent
+        """
+
+        review_message = {
+
+            "sender": "RestaurantAgent",
+
+            "receiver": "ReviewAgent",
+
+            "message_type": "restaurant_analysis",
+
+            "data": restaurants
+
+        }
+
+
+        ranked_results = self.review_agent.analyze_reviews(
+            review_message["data"]
+        )
+
+
+        return ranked_results
+
+
+
     def get_recommendation(
         self,
         user_query
     ):
 
 
+        # -------------------------------
         # Step 1:
-        # Retrieve restaurant information using tool
+        # RAG Tool Communication
+        # -------------------------------
 
         retrieved_documents = self.search_tool.search_restaurants(
             user_query
         )
 
 
+        # -------------------------------
         # Step 2:
-        # Analyze and rank restaurants
+        # RestaurantAgent -> ReviewAgent
+        # -------------------------------
 
-        ranked_documents = self.review_agent.analyze_reviews(
+        ranked_documents = self.send_to_review_agent(
             retrieved_documents
         )
 
 
+        # -------------------------------
         # Step 3:
-        # Generate AI response
+        # LLM Agent Response Generation
+        # -------------------------------
 
         response = self.llm.generate_response(
             user_query,
@@ -64,16 +120,15 @@ class RestaurantAgent:
         )
 
 
+        # -------------------------------
         # Step 4:
-        # Reflection Agent validates response
+        # Reflection Agent Validation
+        # -------------------------------
 
         final_response = self.reflection_agent.review_response(
             response,
             ranked_documents
         )
 
-
-        # Step 5:
-        # Return improved response
 
         return final_response

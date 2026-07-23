@@ -1,6 +1,7 @@
 class UserAgent:
 
-    def get_preferences(
+
+    def create_request(
         self,
         location,
         cuisine,
@@ -8,11 +9,33 @@ class UserAgent:
         rating
     ):
 
-        preferences = {
-            "location": location,
-            "cuisine": cuisine,
-            "budget": budget,
-            "rating": rating
+        """
+        Creates a structured message
+        to communicate with Restaurant Agent.
+        """
+
+
+        message = {
+
+            "sender": "UserAgent",
+
+            "receiver": "RestaurantAgent",
+
+            "message_type": "restaurant_request",
+
+            "data": {
+
+                "location": location,
+
+                "cuisine": cuisine,
+
+                "budget": budget,
+
+                "rating": rating
+
+            }
+
         }
 
-        return preferences
+
+        return message
