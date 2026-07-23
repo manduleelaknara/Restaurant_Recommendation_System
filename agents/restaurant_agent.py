@@ -1,5 +1,6 @@
 from rag.vector_store import RestaurantRAG
 from agents.llm_agent import LLMAgent
+from agents.review_agent import ReviewAgent
 
 
 class RestaurantAgent:
@@ -8,6 +9,8 @@ class RestaurantAgent:
     def __init__(self):
 
         self.rag = RestaurantRAG()
+
+        self.review_agent = ReviewAgent()
 
         self.llm = LLMAgent()
 
@@ -18,17 +21,24 @@ class RestaurantAgent:
         user_query
     ):
 
-        # Step 1: Retrieve relevant restaurants
+
+        # Agent 1: Restaurant Agent retrieves restaurants
         retrieved_documents = self.rag.search(
             user_query,
-            k=3
+            k=5
         )
 
 
-        # Step 2: Generate AI response
+        # Agent 2: Review Agent analyzes retrieved results
+        reviewed_documents = self.review_agent.analyze_reviews(
+            retrieved_documents
+        )
+
+
+        # LLM generates final response
         response = self.llm.generate_response(
             user_query,
-            retrieved_documents
+            reviewed_documents
         )
 
 

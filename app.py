@@ -3,6 +3,7 @@ import pandas as pd
 import os
 
 from agents.restaurant_agent import RestaurantAgent
+from agents.user_agent import UserAgent
 
 
 # -----------------------------
@@ -34,16 +35,23 @@ def load_data():
 df = load_data()
 
 
+
 # -----------------------------
-# Load AI Agent
+# Load Agents
 # -----------------------------
 @st.cache_resource
-def load_agent():
+def load_agents():
 
-    return RestaurantAgent()
+    restaurant_agent = RestaurantAgent()
+
+    user_agent = UserAgent()
+
+    return restaurant_agent, user_agent
 
 
-restaurant_agent = load_agent()
+
+restaurant_agent, user_agent = load_agents()
+
 
 
 # -----------------------------
@@ -52,12 +60,13 @@ restaurant_agent = load_agent()
 st.title("🍽️ Restaurant Recommendation AI Agent")
 
 st.write(
-    "Find restaurants using filters or ask the AI assistant."
+    "AI powered restaurant recommendation system using RAG and multi-agent architecture."
 )
 
 
+
 # =====================================================
-# NORMAL RECOMMENDATION SYSTEM
+# NORMAL SEARCH SYSTEM
 # =====================================================
 
 st.header("🔎 Search Restaurants")
@@ -71,9 +80,7 @@ with col1:
     location = st.selectbox(
         "Select Location",
         ["All"] + sorted(
-            df["Location"]
-            .dropna()
-            .unique()
+            df["Location"].dropna().unique()
         )
     )
 
@@ -83,9 +90,7 @@ with col2:
     cuisine = st.selectbox(
         "Select Cuisine",
         ["All"] + sorted(
-            df["Cuisine"]
-            .dropna()
-            .unique()
+            df["Cuisine"].dropna().unique()
         )
     )
 
@@ -93,9 +98,7 @@ with col2:
 budget = st.selectbox(
     "Select Budget",
     ["All"] + sorted(
-        df["Budget"]
-        .dropna()
-        .unique()
+        df["Budget"].dropna().unique()
     )
 )
 
@@ -108,7 +111,9 @@ min_rating = st.slider(
 )
 
 
+
 if st.button("🍴 Recommend Restaurants"):
+
 
     result = df.copy()
 
@@ -116,36 +121,21 @@ if st.button("🍴 Recommend Restaurants"):
     if location != "All":
 
         result = result[
-            result["Location"]
-            .astype(str)
-            .str.strip()
-            .str.lower()
-            ==
-            location.strip().lower()
+            result["Location"] == location
         ]
 
 
     if cuisine != "All":
 
         result = result[
-            result["Cuisine"]
-            .astype(str)
-            .str.strip()
-            .str.lower()
-            ==
-            cuisine.strip().lower()
+            result["Cuisine"] == cuisine
         ]
 
 
     if budget != "All":
 
         result = result[
-            result["Budget"]
-            .astype(str)
-            .str.strip()
-            .str.lower()
-            ==
-            budget.strip().lower()
+            result["Budget"] == budget
         ]
 
 
@@ -156,6 +146,7 @@ if st.button("🍴 Recommend Restaurants"):
         )
         >= min_rating
     ]
+
 
 
     if len(result) > 0:
@@ -174,16 +165,16 @@ if st.button("🍴 Recommend Restaurants"):
 
             st.write(
                 f"""
-                🍛 Cuisine: {row['Cuisine']}
+🍛 Cuisine: {row['Cuisine']}
 
-                📍 Location: {row['Location']}
+📍 Location: {row['Location']}
 
-                💰 Budget: {row['Budget']}
+💰 Budget: {row['Budget']}
 
-                ⭐ Rating: {row['Rating']}
+⭐ Rating: {row['Rating']}
 
-                📝 Review: {row['Review']}
-                """
+📝 Review: {row['Review']}
+"""
             )
 
             st.divider()
@@ -192,14 +183,16 @@ if st.button("🍴 Recommend Restaurants"):
     else:
 
         st.warning(
-            "No restaurants found. Try different filters."
+            "No restaurants found."
         )
+
 
 
 
 # =====================================================
 # AI CHATBOT
 # =====================================================
+
 
 st.header("💬 Chat With Restaurant AI")
 
@@ -209,6 +202,7 @@ question = st.text_input(
 )
 
 
+
 if st.button("🤖 Ask AI"):
 
 
@@ -216,9 +210,21 @@ if st.button("🤖 Ask AI"):
 
 
         with st.spinner(
-            "AI is thinking..."
+            "AI Agent is thinking..."
         ):
 
+
+            # User Agent receives user query
+
+            preferences = user_agent.get_preferences(
+                location="",
+                cuisine="",
+                budget="",
+                rating=0
+            )
+
+
+            # Restaurant Agent handles RAG + Review + LLM
 
             answer = restaurant_agent.get_recommendation(
                 question
