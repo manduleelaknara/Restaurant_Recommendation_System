@@ -1,6 +1,7 @@
 from agents.rag_tool import RestaurantSearchTool
 from agents.llm_agent import LLMAgent
 from agents.review_agent import ReviewAgent
+from agents.reflection_agent import ReflectionAgent
 
 
 class RestaurantAgent:
@@ -12,7 +13,8 @@ class RestaurantAgent:
     1. Uses RAG Search Tool to retrieve restaurants
     2. Sends retrieved information to Review Agent
     3. Sends ranked results to LLM Agent
-    4. Returns final recommendation
+    4. Reflects and validates final response
+    5. Returns final recommendation
     """
 
 
@@ -26,6 +28,9 @@ class RestaurantAgent:
 
         self.llm = LLMAgent()
 
+        # Reflection Pattern
+        self.reflection_agent = ReflectionAgent()
+
 
 
     def get_recommendation(
@@ -34,30 +39,24 @@ class RestaurantAgent:
     ):
 
 
-        # ---------------------------------
         # Step 1:
-        # Use RAG Search Tool
-        # ---------------------------------
+        # Retrieve restaurant information using tool
 
         retrieved_documents = self.search_tool.search_restaurants(
             user_query
         )
 
 
-        # ---------------------------------
         # Step 2:
-        # Review Agent Ranking
-        # ---------------------------------
+        # Analyze and rank restaurants
 
         ranked_documents = self.review_agent.analyze_reviews(
             retrieved_documents
         )
 
 
-        # ---------------------------------
         # Step 3:
-        # LLM Agent Response Generation
-        # ---------------------------------
+        # Generate AI response
 
         response = self.llm.generate_response(
             user_query,
@@ -65,9 +64,16 @@ class RestaurantAgent:
         )
 
 
-        # ---------------------------------
         # Step 4:
-        # Return Final Recommendation
-        # ---------------------------------
+        # Reflection Agent validates response
 
-        return response
+        final_response = self.reflection_agent.review_response(
+            response,
+            ranked_documents
+        )
+
+
+        # Step 5:
+        # Return improved response
+
+        return final_response
